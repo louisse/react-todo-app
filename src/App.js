@@ -8,18 +8,14 @@ const App = () => {
   return (
     <Fragment>
       <header>
-        <div className='container todo-list-heading'>
-          <h1 className='todo-list-heading-text'>Todo App</h1>
+        <div className='container'>
+          <div className='todo-app-heading'>
+            <h1 className='todo-app-heading-text'>Todo App</h1>
+          </div>
         </div>
       </header>
-      <div className='container todo-form-wrapper'>
-        <h2 className='todo-list-heading-text'>Todo Form</h2>
-        <TodoForm todos={todos} setTodos={setTodos} />
-      </div>
-      <div className='container todo-list-wrapper'>
-        <h2 className='todo-list-heading-text'>Todo List</h2>
-        <TodoList todos={todos} setTodos={setTodos} />
-      </div>
+      <TodoForm todos={todos} setTodos={setTodos} />
+      <TodoList todos={todos} setTodos={setTodos} />
       <footer>
         <div className='container'>&copy; Copyright 2024</div>
       </footer>

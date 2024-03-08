@@ -1,8 +1,7 @@
-.todo-list-heading {
-  margin-top: 15px;
+.todo-app-heading {
+  padding: 15px
 }
 
-.todo-list-heading-text {
+.todo-app-heading-text {
   text-align: center;
-  margin-bottom: 15px;
 }
