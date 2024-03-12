@@ -11,12 +11,11 @@ export const todos = (state = [], action) => {
         }
         case COMPLETE_TODO: {
             const { title } = payload;
-            const markComplete = todo => {
-                if (todo.title === title) {
-                    todo.is_completed = true;
-                }
-                return todo;
-            };
+            const markComplete = todo => (
+                (todo.title === title)
+                 ? {...todo, is_completed: true} 
+                 : todo
+            );
             return state.map(markComplete);
         }
         case REMOVE_TODO: {

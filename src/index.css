@@ -33,6 +33,7 @@ button {
   background-color: #0000ff;
   border: 0;
   color: #fff;
+  cursor: pointer;
 }
 
 .container {

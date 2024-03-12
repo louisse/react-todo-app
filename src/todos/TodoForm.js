@@ -3,13 +3,13 @@ import { connect } from "react-redux";
 import { createTodo } from "./actions";
 import './TodoForm.css';
 
-export const TodoForm = ({ todos, onCreateTodo }) => {
+export const TodoForm = ({ todos, onSubmitPressed }) => {
     const [title, setTitle] = useState('');
-    const onFormSubmit = e => {
+    const handleSubmit = e => {
         e.preventDefault();
         const isDuplicate = todos.some(todo => todo.title === title);
         if (!isDuplicate) {
-            onCreateTodo(title);
+            onSubmitPressed(title);
             setTitle('');
         }
         document.getElementById('todo-form-title-input').focus();
@@ -17,7 +17,7 @@ export const TodoForm = ({ todos, onCreateTodo }) => {
     return (
         <div className='container'>
             <h2 className='todo-form-heading-text'>Todo Form</h2>
-            <form onSubmit={onFormSubmit}>
+            <form onSubmit={handleSubmit}>
                 <div className='todo-form-container'>
                     <div className='todo-form-title-wrapper'>
                         <label htmlFor='todo-form-title-input' className='todo-form-title-label'>Title:</label>
@@ -37,7 +37,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    onCreateTodo: title => dispatch(createTodo(title))
+    onSubmitPressed: title => dispatch(createTodo(title))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(TodoForm);
