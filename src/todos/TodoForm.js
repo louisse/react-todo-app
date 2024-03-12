@@ -1,13 +1,17 @@
 import { useState } from "react";
+import { connect } from "react-redux";
+import { createTodo } from "./actions";
 import './TodoForm.css';
 
-export const TodoForm = ({ todos, setTodos }) => {
+export const TodoForm = ({ todos, onCreateTodo }) => {
     const [title, setTitle] = useState('');
     const onFormSubmit = e => {
         e.preventDefault();
-        const todo = { title, date_created: (new Date()).toISOString().substring(0, 10), is_completed: false };
-        setTodos(todos.concat(todo));
-        setTitle('');
+        const isDuplicate = todos.some(todo => todo.title === title);
+        if (!isDuplicate) {
+            onCreateTodo(title);
+            setTitle('');
+        }
         document.getElementById('todo-form-title-input').focus();
     };
     return (
@@ -27,3 +31,13 @@ export const TodoForm = ({ todos, setTodos }) => {
         </div>
     );
 };
+
+const mapStateToProps = (state) => ({
+    todos: state.todos
+});
+
+const mapDispatchToProps = (dispatch) => ({
+    onCreateTodo: title => dispatch(createTodo(title))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(TodoForm);

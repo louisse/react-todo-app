@@ -1,10 +1,9 @@
-import { Fragment, useState } from 'react';
-import { TodoList } from './todos/TodoList';
-import { TodoForm } from './todos/TodoForm';
+import { Fragment } from 'react';
+import TodoList from './todos/TodoList';
+import TodoForm from './todos/TodoForm';
 import './App.css';
 
 const App = () => {
-  const [todos, setTodos] = useState([]);
   return (
     <Fragment>
       <header>
@@ -14,8 +13,8 @@ const App = () => {
           </div>
         </div>
       </header>
-      <TodoForm todos={todos} setTodos={setTodos} />
-      <TodoList todos={todos} setTodos={setTodos} />
+      <TodoForm />
+      <TodoList />
       <footer>
         <div className='container'>&copy; Copyright 2024</div>
       </footer>
