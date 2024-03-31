@@ -3,10 +3,39 @@ import Todo from "./todos";
 import "./App.css";
 
 const Home = () => (
-  <div style={{ padding: 20 }}>
-    <h2>Home View</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adip.</p>
-  </div>
+  <>
+    <header>
+      <div className="container">
+        <div className="todo-app-heading">
+          <h1 className="todo-app-heading-text">Home View</h1>
+        </div>
+      </div>
+    </header>
+    <div className="container">
+      <p>Lorem ipsum dolor sit amet, consectetur adip.</p>
+    </div>
+    <footer>
+      <div className="container">&copy; Copyright 2024</div>
+    </footer>
+  </>
+);
+
+const NoMatch = () => (
+  <>
+    <header>
+      <div className="container">
+        <div className="todo-app-heading">
+          <h1 className="todo-app-heading-text">404: Page Not Found</h1>
+        </div>
+      </div>
+    </header>
+    <div className="container">
+      <p>Lorem ipsum dolor sit amet, consectetur adip.</p>
+    </div>
+    <footer>
+      <div className="container">&copy; Copyright 2024</div>
+    </footer>
+  </>
 );
 
 const App = () => {
@@ -23,6 +52,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/todo" element={<Todo />} />
+        <Route path="*" element={<NoMatch />} />
       </Routes>
     </BrowserRouter>
   );
