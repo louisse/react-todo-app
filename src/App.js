@@ -1,25 +1,31 @@
-import { Fragment } from 'react';
-import TodoList from './todos/TodoList';
-import TodoForm from './todos/TodoForm';
-import './App.css';
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import Todo from "./todos";
+import "./App.css";
+
+const Home = () => (
+  <div style={{ padding: 20 }}>
+    <h2>Home View</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adip.</p>
+  </div>
+);
 
 const App = () => {
   return (
-    <Fragment>
-      <header>
-        <div className='container'>
-          <div className='todo-app-heading'>
-            <h1 className='todo-app-heading-text'>Todo App</h1>
-          </div>
-        </div>
-      </header>
-      <TodoForm />
-      <TodoList />
-      <footer>
-        <div className='container'>&copy; Copyright 2024</div>
-      </footer>
-    </Fragment>
+    <BrowserRouter>
+      <nav style={{ margin: 10 }}>
+        <Link to="/" style={{ padding: 5 }}>
+          Home
+        </Link>
+        <Link to="/todo" style={{ padding: 5 }}>
+          Todo
+        </Link>
+      </nav>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/todo" element={<Todo />} />
+      </Routes>
+    </BrowserRouter>
   );
-}
+};
 
 export default App;
